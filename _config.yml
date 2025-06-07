@@ -1,50 +1,114 @@
-# SITE CONFIGURATION
-baseurl: "/test"
+title: "ProductReviews Pro"
+description: "Honest product reviews and recommendations to help you make informed buying decisions"
 url: "https://duke3c.github.io"
+baseurl: "/test"
 
-# THEME-SPECIFIC CONFIGURATION
-title: Type on Strap                                    # site's title
-description: "A website with blog posts and pages"      # used by search engines
-avatar: assets/img/triangle.png                         # Empty for no avatar in navbar
-favicon: assets/favicon.ico                             # Icon displayed in the tab
+# Author Information (Type-on-Strap specific)
+author:
+  name: "Your Name"
+  email: "your.email@example.com"
+  github: "yourusername"
+  twitter: "yourusername"
+  linkedin: "yourlinkedin"
 
-# Header and footer text
-header_text: Change <code>header_text</code> in <code>_config.yml</code>  # Change Blog header text
-header_feature_image: assets/img/header/triangular.jpeg
-header_feature_image_responsive: true
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+# SEO Settings
+lang: "en-US"
+timezone: "America/New_York"  # Change to your timezone
 
-# Blog
-excerpt: true                                           # Or "truncate" (first 250 characters), "false" to disable
-post_navigation: true
-color_image: /assets/img/lineart.png                    # A bit transparent for color posts.
+# Analytics & Monetization
+#google_analytics: "G-XXXXXXXXXX"  # Replace with your Google Analytics ID
 
-# Features
-# More in the _data folder for comments, share buttons, author and language
-# For layout customization, go to the "_sass > base" folder, and check "_variables.scss"
-katex: true                                             # Enable if using math markup
-mermaid: default                                        # Enable mermaid-js for diagrams, use theme: base, forest, dark, default, neutral
-google_analytics:                                       # Measurement ID, e.g. "G-00000"
-cookie_consent: false                                   # To respect the usage of cookies
-color_theme: auto                                       # auto, dark or light
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+paginate: 6
+paginate_path: "/page:num/"
 
-# PAGINATION
-paginate: 5
-paginate_path: "/blog/page:num"
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-gist
 
-# PORTFOLIO
+# Type-on-Strap Theme Settings
+remote_theme: sylhare/Type-on-Strap
+
+# Theme Color Scheme
+theme_color: "#2c3e50"  # Dark blue-gray for professional look
+color_theme: auto  # auto, light, or dark
+
+# Portfolio Settings (for showcasing different product categories)
+portfolio: true
+portfolio_title: "Product Categories"
+
+# Navigation (Type-on-Strap specific)
+navbar:
+  - title: "Home"
+    url: "/"
+  - title: "Reviews"
+    url: "/reviews/"
+  - title: "Categories" 
+    url: "/portfolio/"
+  - title: "About"
+    url: "/about/"
+  - title: "Contact"
+    url: "/contact/"
+
+# Footer
+footer_text: "© 2025 ProductReviews Pro. All rights reserved."
+
+# Collections for organizing content
 collections:
-  portfolio:
+  reviews:
     output: true
-    permalink: /:collection/:name
+    permalink: /:collection/:name/
+  categories:
+    output: true
+    permalink: /category/:name/
 
-# BUILD SETTINGS
-sass:
-  style: compressed
-  quiet_deps: true
-plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
-exclude: [".jekyll-cache", ".jekyll-metadata", ".idea", "vendor/*", "assets/node_modules/*"]
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Your Name"
+      show_sidebar: true
+  - scope:
+      path: ""
+      type: "reviews"
+    values:
+      layout: "review"
+      author: "Your Name"
 
-# theme: type-on-strap                                  # if using the theme as a jekyll theme gem
-remote_theme: sylhare/Type-on-Strap                     # If using as a remote_theme in github
+# Affiliate Marketing Specific
+affiliate_disclosure: "This site contains affiliate links. We may earn a commission if you purchase through these links at no extra cost to you."
+
+# Site Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Reviews"
+    url: "/reviews/"
+  - title: "Categories"
+    url: "/portfolio/"
+  - title: "About"
+    url: "/about/"
+  - title: "Contact"
+    url: "/contact/"
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE.md
